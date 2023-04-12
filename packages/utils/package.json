@@ -1,6 +1,6 @@
 {
   "name": "@gerhardt-test-cli-dev/utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "> TODO: description",
   "author": "wangjianhao <gerhardtwang@gmail.com>",
   "homepage": "",
@@ -18,7 +18,5 @@
   },
   "scripts": {
     "test": "node ./__tests__/@gerhardt-test-cli-dev/utils.test.js"
-  },
-  "dependencies": {
   }
 }
