@@ -16,11 +16,14 @@
   "files": [
     "lib"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "node ./__tests__/core.test.js"
   },
   "dependencies": {
     "gerhardt-cli-test-lib": "^1.0.0"
   },
-  "gitHead": "dd788c80ad541435af796a32e1ca384e6d11f68a"
+  "gitHead": "5d472f1eadeb1c2547991788cf49f431b83e900b"
 }

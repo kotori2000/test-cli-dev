@@ -19,5 +19,5 @@
   "scripts": {
     "test": "node ./__tests__/@gerhardt-test-cli-dev/utils.test.js"
   },
-  "gitHead": "dd788c80ad541435af796a32e1ca384e6d11f68a"
+  "gitHead": "5d472f1eadeb1c2547991788cf49f431b83e900b"
 }
