@@ -23,7 +23,9 @@
     "test": "node ./__tests__/core.test.js"
   },
   "dependencies": {
-    "gerhardt-cli-test-lib": "^1.0.0"
+    "@gerhardt-test-cli-dev/utils": "file:../utils",
+    "gerhardt-cli-test-lib": "^1.0.0",
+    "yargs": "^17.7.2"
   },
   "gitHead": "5d472f1eadeb1c2547991788cf49f431b83e900b"
 }
