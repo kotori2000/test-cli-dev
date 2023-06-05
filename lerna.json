@@ -1,4 +1,10 @@
 {
+  "packages": [
+    "core/*",
+    "models/*",
+    "utils/*",
+    "commands/*"
+  ],
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "useWorkspaces": true,
   "version": "1.0.6"
