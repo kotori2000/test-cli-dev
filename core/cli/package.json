@@ -25,11 +25,17 @@
   "dependencies": {
     "@gerhardt-test-cli-dev/log": "file:../../utils/log",
     "@gerhardt-test-cli-dev/utils": "file:../../utils/utils",
+    "@gerhardt-test-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
     "colors": "^1.4.0",
+    "dotenv": "^16.3.0",
     "gerhardt-cli-test-lib": "^1.0.0",
     "import-local": "^3.1.0",
+    "minimist": "^1.2.8",
     "npmlog": "^7.0.1",
+    "path-exists": "^3.0.0",
+    "root-check": "^1.0.0",
     "semver": "^7.5.1",
+    "user-home": "^3.0.0",
     "yargs": "^17.7.2"
   },
   "gitHead": "5d472f1eadeb1c2547991788cf49f431b83e900b"
