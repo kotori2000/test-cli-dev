@@ -23,10 +23,11 @@
     "test": "node ./__tests__/core.test.js"
   },
   "dependencies": {
+    "@gerhardt-test-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
     "@gerhardt-test-cli-dev/log": "file:../../utils/log",
     "@gerhardt-test-cli-dev/utils": "file:../../utils/utils",
-    "@gerhardt-test-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
     "colors": "^1.4.0",
+    "commander": "^11.0.0",
     "dotenv": "^16.3.0",
     "gerhardt-cli-test-lib": "^1.0.0",
     "import-local": "^3.1.0",

@@ -39,12 +39,14 @@ async function checkGlobalUpdate() {
   const currentVersion = pkg.version;
   const npmName = pkg.name;
   // 2.调用npmAPI，获取所有版本号
-  const { getNpmInfo } = require('@gerhardt-test-cli-dev/get-npm-info');
-  const npmInfo = await getNpmInfo(npmName);
-  console.log(npmInfo);
+  const { getNpmVersions, getNpmSemverVersions } = require('@gerhardt-test-cli-dev/get-npm-info');
   // 3.提取所有版本号，对比那些版本号大于用户当前版本号
+  const lastVersion = await getNpmSemverVersions('1.0.6', npmName);
   // 4.提取最新版本号，提示用户更新到此版本
-
+  if (lastVersion && semver.gt(lastVersion, currentVersion)) {
+    log.warn(colors.yellow(`请手动更新${npmName}, 当前版本${currentVersion}, 最新版本${lastVersion}
+    更新命令 npm install -g ${npmName} 请更新至最新版本`))
+  }
 }
 
 function checkEnv() {

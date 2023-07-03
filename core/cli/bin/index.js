@@ -1,83 +1,63 @@
 #! /usr/bin/env node
-// "@gerhardt-test-cli-dev/utils": "file:../utils"：  本地开发，软链最佳实践，但需要脚本在publish的时候将本地地址替换成线上的
-// const utils = require("@gerhardt-test-cli-dev/utils")
-// const yargs = require("yargs/yargs")
-// const dedent = require("dedent")
-// const pkg = require("../package.json")
+// const importLocal = require('import-local')
 
-// const { hideBin } = require('yargs/helpers')
-// // const { option, require } = require("yargs")
-// const arg = hideBin(process.argv)
-// const cli = yargs(arg)
-
-// const context = {
-//   testCliVersion: pkg.version
+// // console.log(importLocal(__filename))
+// if (importLocal(__filename)) {
+//   require('npmlog').info('cli', '正在使用 cli 本地版本')
+// } else {
+//   require('../lib')(process.argv.slice(2))
 // }
-// const argv = process.argv.slice(2)
 
-// cli
-//   .usage('Usage: cli-test [command] <options>')
-//   .demandCommand(1, "A command is required. Pass --help to see all available commands and options.")
-//   .strict()
-//   .recommendCommands() // 命令智能推荐
-//   .fail((err, msg) => {
-//     console.log(err, msg)
+const commander = require('commander')
+
+const pkg = require('../package.json')
+
+// 获取commander的单例
+// const { program } = commander
+
+// 手动实例化一个Command实例
+const program = new commander.Command();
+
+program
+  .name(Object.keys(pkg.bin)[0])
+  .usage('[commander] [options]')
+  .version(pkg.version)
+  .option('-d --debug', '是否开启调试模式', false);
+
+// command 注册命令
+const clone = program.command('clone <source> [desc]');
+clone
+  .description('clone a repository')
+  .option('-f --force', '是否强制克隆')
+  .action((source, desc, cmdObj) => {
+    console.log(source, desc, 'do clone', cmdObj);
+  });
+
+// addCommand 注册命令
+// const service = new commander.Command('service');
+// service
+//   .command('start [port]')
+//   .description('start service by port')
+//   .action((port) => {
+//     console.log('do service start', port);
 //   })
-//   .alias("h", "help")
-//   .alias("v", "version")
-//   // .alias("d", "debug")
-//   .wrap(cli.terminalWidth())
-//   .epilogue(dedent`
-//   When a command fails, all logs are written to lerna-debug.log in the current working directory.
 
-//   For more information, check out the docs at https://lerna.js.org/docs/introduction
-// `)
-//   .options({
-//     debug: {
-//       type: 'boolean',
-//       describe: 'bootstrap debug mode',
-//       alias: 'd'
-//     }
-//   })
-//   .option('registry', {
-//     type: 'string',
-//     describe: 'define global registry',
-//     alias: 'r'
-//   })
-//   .group(['debug'], 'Dev options:')
-//   .group(['registry'], 'Extra options:')
-//   .command('init [name]', 'Do init a project', (yargs) => {
-//     yargs
-//       .option('name', {
-//         type: 'string',
-//         describe: 'Name of a project'
-//       })
-//   }, (argv) => {
-//     console.log('commandArgv', argv);
-//   })
-//   .command(
-//     {
-//       command: 'list',
-//       alias: ['ls', 'la'],
-//       describe: 'local packages',
-//       builder: (yargs) => {},
-//       handler: (argv) => {
-//         console.log('list command argv', argv)
-//       }
-//     }
-//   )
-//   .parse(argv, context); // 该方法可以往argv中注入参数
+program
+  .command('install [name]', 'install package', {
+    executableFile: 'test-cli',
+    isDefault: true,
+    hidden: true,
+  })
+  .alias('i');
 
+program
+  .arguments('<cmd> [options]') // 这里要求command必须输入一个命令
+  .description('test command')
+  .action((cmd, options) => {
+    console.log(cmd, options);
+  });
 
-// console.log('hello, kotori2000 rebase 测试2')
-// console.log('增加commit')
-// console.log('utils', utils())
+program
+  .parse(process.argv);
 
-const importLocal = require('import-local')
-
-// console.log(importLocal(__filename))
-if (importLocal(__filename)) {
-  require('npmlog').info('cli', '正在使用 cli 本地版本')
-} else {
-  require('../lib')(process.argv.slice(2))
-}
+  // program.outputHelp();
