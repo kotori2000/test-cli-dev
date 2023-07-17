@@ -20,7 +20,9 @@
     "access": "public"
   },
   "scripts": {
-    "test": "node ./__tests__/core.test.js"
+    "test": "node ./__tests__/core.test.js",
+    "build": "webpack",
+    "dev": "webpack -w"
   },
   "dependencies": {
     "@gerhardt-test-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
@@ -39,5 +41,14 @@
     "user-home": "^3.0.0",
     "yargs": "^17.7.2"
   },
-  "gitHead": "5d472f1eadeb1c2547991788cf49f431b83e900b"
+  "gitHead": "5d472f1eadeb1c2547991788cf49f431b83e900b",
+  "devDependencies": {
+    "@babel/core": "^7.22.9",
+    "@babel/plugin-transform-runtime": "^7.22.9",
+    "@babel/preset-env": "^7.22.9",
+    "@babel/runtime-corejs3": "^7.22.6",
+    "babel-loader": "^9.1.3",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
+  }
 }
